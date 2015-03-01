@@ -117,6 +117,9 @@ def parse(input_filename, output_filename):
                 elif type.startswith("int("):
                     type = "integer"
                     set_sequence = True
+                elif type.startswith("tinyint("):
+                    type = "smallint"
+                    set_sequence = True
                 elif type.startswith("bigint("):
                     type = "bigint"
                     set_sequence = True
@@ -135,6 +138,8 @@ def parse(input_filename, output_filename):
                 elif type == "datetime":
                     type = "timestamp with time zone"
                 elif type == "double":
+                    type = "double precision"
+                elif type.startswith("double("):
                     type = "double precision"
                 elif type == "blob":
                     type = "bytea"
